@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Sequencer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Audio Sequencer</h1>
+
+        <div class="display-area">
+            <h3>Marker Display</h3>
+            <div id="timeline-container">
+                <canvas id="waveformCanvas"></canvas>
+                <div id="playhead"></div>
+                <div id="markers-layer"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="file" id="audioInput" accept="audio/*" style="display:none">
+            <button id="btnImport">Import Audio</button>
+            <button id="btnPlayPause" disabled>Play</button>
+            <button id="btnStop" disabled>Set Time to 0</button>
+            <button id="btnAddMarker" disabled>Add Marker</button>
+            <button id="btnAutoMarker" class="special-feature" disabled>Auto-place Markers</button>
+        </div>
+
+        <div class="lists-container">
+            <div class="list-column">
+                <h3>Marker Timestamps</h3>
+                <textarea id="txtTimestamps" readonly></textarea>
+                <button id="btnDownloadTimestamps">Download Timestamps</button>
+            </div>
+            <div class="list-column">
+                <h3>Marker Names</h3>
+                <textarea id="txtMarkerNames" readonly></textarea>
+                <button id="btnDownloadNames">Download Marker Names</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="markerModal" class="modal">
+        <div class="modal-content">
+            <h2>Enter marker name</h2>
+            <input type="text" id="markerNameInput" placeholder="Marker Name">
+            <div class="modal-buttons">
+                <button id="btnCancelModal">Cancel</button>
+                <button id="btnOkModal">OK</button>
+            </div>
+        </div>
+    </div>
+    
+<div class="controls">
+    <div class="setting-group">
+        <label for="thresholdInput">Threshold:</label>
+        <input type="range" id="thresholdInput" min="0.1" max="0.9" step="0.05" value="0.5">
+    </div>
+    <button id="btnAutoMarker" class="special-feature" disabled>Auto-place</button>
+    <button id="btnClearMarkers" style="background-color: #dc3545;" disabled>Clear All</button>
+</div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
